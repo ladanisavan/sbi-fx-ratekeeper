@@ -14214,3 +14214,21 @@ Exception: Unable to retrieve a valid PDF
 2026-11-09 20:52:41,251 - __main__ - WARNING - Ambiguous date found: Date 09-11-2026. Using file creation date as tie-breaker.
 2026-11-10 17:59:42,793 - __main__ - WARNING - Ambiguous date found: Date 09-11-2026. Using file creation date as tie-breaker.
 2026-11-12 18:27:43,160 - __main__ - WARNING - Ambiguous date found: Date 12-11-2026. Using file creation date as tie-breaker.
+2026-11-13 17:55:08,466 - __main__ - INFO - Failed to download PDFs directly. Attempting with proxies...
+2026-11-13 17:55:09,039 - __main__ - ERROR - An error occurred: There are no working proxies at this time.
+Traceback (most recent call last):
+  File "/home/runner/work/sbi-fx-ratekeeper/sbi-fx-ratekeeper/main.py", line 406, in <module>
+    file_content = get_latest_pdf_from_sbi()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sbi-fx-ratekeeper/sbi-fx-ratekeeper/main.py", line 247, in get_latest_pdf_from_sbi
+    response = download_pdf(SBI_DAILY_RATES_URL, session, use_proxy=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sbi-fx-ratekeeper/sbi-fx-ratekeeper/main.py", line 222, in download_pdf
+    proxy = FreeProxy(timeout=1, rand=True, elite=True, https=True).get()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fp/fp.py", line 85, in get
+    return self.get(repeat=True)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/fp/fp.py", line 86, in get
+    raise FreeProxyException(
+fp.errors.FreeProxyException: There are no working proxies at this time.
